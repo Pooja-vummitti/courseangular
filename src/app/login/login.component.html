@@ -1,0 +1,19 @@
+<p>login works!</p>
+
+<div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">Login</h5>
+      <div class="form-floating mb-3">
+        <input type="username" class="form-control" id="floatingInput" placeholder="username" [(ngModel)]="user" class="form-control" required>
+        <label>username</label>
+      </div>
+      <div class="form-floating">
+        <label >Password </label>
+         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="pass" class="form-control" required>
+        
+      </div>
+      <a routerLink="#" class="btn btn-primary"  (click)="onLoginButtonClick()">login</a>
+      <a routerLink="#" class="btn btn-primary"  (click)="onLogoutclick()">logout</a>
+    </div>
+  </div>
+

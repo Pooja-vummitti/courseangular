@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- one waybinding -->
+   <h1>{{title}}
+  </h1> 
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/login">login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user">user</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <!-- <a class="nav-link" routerLink="/menu/course">Menu</a> -->
+          <select
+            class="form-select nav-link a"
+            id="dropdown"
+            (change)="onSelectChange($event)"
+          >
+            <option value="cours">Menu</option>
+            <option value="coursee">Course</option>
+            <option value="free">Free</option>
+            <option value="paid">Paid</option>
+          </select>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup">signup</a>
+        </li>
+        <div class="search" aria-placeholder="search">
+          <!-- <input type="text" (input)="search($event)" /> -->
+          <input type="text" [(ngModel)]="search" (keydown.enter)="saved()"/>
+          
+        </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Workshop">Workshop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/methods">Method</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users">Post</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<body>
+  
+  <p>{{search}}</p>
+  <!-- directive ngfor -->
+  <p >Items you searched for:<br></p>
+  <!-- <div *ngIf="showTemplate; else template1"> -->
+<div *ngFor="let item of searchbox" [ngStyle]="{ 'background-color': isString(item) ? 'red' : 'green' }">
+  {{ item }}
+
+</div>
+<!-- </div> -->
+<ng-template #template1>
+  <ng-container *ngFor="let item of searchbox">
+    <div [ngStyle]="{ 'background-color': isString(item) ? 'green' : 'blue' }">
+      {{ item }}
+    </div>
+  </ng-container>
+</ng-template>
+
+<!-- error -->
+<!-- <div *ngFor="let item of searchbox" *ngIf="isString(item)" [ngStyle]="{'background-color': 'red'}">
+  {{ item }}
+</div>
+
+ <div *ngFor="let item of searchbox" *ngIf="!isString(item)" [ngStyle]="{'background-color': 'blue'}">
+  {{ item }}
+</div>  -->
+
+</body>
+<app-body></app-body>
+<app-contact></app-contact>
+<app-footer></app-footer>

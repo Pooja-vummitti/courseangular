@@ -1,0 +1,193 @@
+<div class="container">
+  <div class="row" >
+    <div class="col-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" (click)="goBackToHome">
+                <h1>Workshop</h1>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+   <body class=" row justify-content-center align-items-center">
+    <div class="d-flex">
+      <div class="col-4">
+        <ol *ngFor="let item of user">
+          <div [innerHtml]="'<h3>Title</h3>  &nbsp<b><h4>' + item.na + '</b></h4<br><h5>Description:</h5> ' + item.description + '<br><h5>Duration: </h5>' + item.duration + '<br><h5>Time:</h5> ' + item.Day+'<br><br>'"></div>
+        </ol>
+       
+      </div>
+      <div class="col">
+         <a href="#form"><img src="\assets\html.png" class="img-fluid" alt="Workshop"  height="40px" width="50%" padding-right="2%"></a><br><br>
+         <a href="#form"><img src="\assets\css.jpg" class="img-fluid" alt="Workshop" height="40%"width="50%" padding-left="2%"></a>
+      </div>
+      </div>
+
+   <h2 class=" row justify-content-center align-items-center" id="form">Registration Form</h2>
+ 
+    <form class="form" [formGroup]="reactiveForm"  style="width:25rem">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <div class="input-box">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            formControlName="firstname"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            reactiveForm.get('firstname').invalid &&
+            reactiveForm.get('firstname').touched
+          "
+        >
+          first name is required
+        </small>
+        <small *ngIf="reactiveForm.get('firstname').hasError('notallowed')"
+          >First name is not allowed.</small
+        >
+
+        <!-- <div [hidden]="!firstname.errors.pattern">
+        Only characters are allowed
+       </div> -->
+      </div>
+      <div class="input-box">
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="age"
+            formControlName="age"
+            placeholder="Enter your age"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            reactiveForm.get('age').invalid && reactiveForm.get('age').touched
+          "
+        >
+          age is required</small
+        >
+      </div>
+
+      <div class="input-box">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            reactiveForm.get('email').invalid &&
+            reactiveForm.get('email').touched
+          "
+        >
+          email is required</small
+        >
+      </div>
+
+      <div class="input-box">
+        <div class="form-group">
+          <label>Gender:</label>
+          <div class="form-check">
+            <input
+              type="radio"
+              value="male"
+              class="form-check-input"
+              id="male"
+              value="male"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              value="female"
+              class="form-check-input"
+              id="female"
+              value="female"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              value="other"
+              class="form-check-input"
+              id="other"
+              value="other"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+        </div>
+        <small
+          *ngIf="
+            reactiveForm.get('gender').invalid &&
+            reactiveForm.get('gender').touched
+          "
+        >
+          gender is required</small
+        >
+      </div>
+
+      <div class="input-box">
+        <div class="form-group">
+          <label for="timeSlot">Time Slot:</label>
+          <select class="form-control" id="timeSlot" formControlName="timeSlot">
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+          </select>
+        </div>
+        <small
+          *ngIf="
+            reactiveForm.get('timeSlot').invalid &&
+            reactiveForm.get('timeSlot').touched
+          "
+        >
+          timeslot is required</small
+        >
+      </div>
+      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="submit()"
+        [disabled]="!reactiveForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+    <h5>Your registering on {{ time | date : "fullDate"|uppercase }}</h5>
+   </body>
+  </div>
+  </div>
+<app-footer></app-footer>
+
+

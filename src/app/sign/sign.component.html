@@ -1,0 +1,73 @@
+<p>sign works!</p>
+<!-- ngif directive and form -->
+<form style="width: 20rem">
+    <div class="form-group" >
+        <label for="firstName">firstName</label>
+        <input 
+        required
+        minlength ="3" 
+        maxlength="10" 
+        pattern="[a-zA-Z]{3,10}"
+        ngModel 
+        name ="firstName"
+        #firstName="ngModel"
+        id="firstName" 
+        type="text" 
+        class="form-control">
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.errors['required']">
+              firstName is required
+            </div>
+            <div *ngIf="firstName.errors['minlength']">
+              firstName is minlength is 3 characters
+            </div>
+            <div *ngIf="firstName.errors['pattern']">
+              firstName doesn't match the pattern
+            </div>
+          </div>
+       <label for="lastName">lastName</label>
+        <input 
+        required 
+        minlength ="5" 
+        maxlength="10" 
+        pattern="[a-zA-Z]{5,10}"
+        ngModel 
+        name="lastName" 
+        #lastName="ngModel"
+        id="lastName" 
+        type="text" 
+        class="form-control">
+        <div 
+        class="alert alert-danger" 
+        *ngIf="lastName.touched && !lastName.valid">
+            <div *ngIf="firstName.errors['required']">
+                lastName is required
+            </div>
+            <!-- <div *ngIf="firstName.errors?.minlength"> another way which is showing error--> 
+                <div *ngIf="lastName.errors['minlength']">
+                    lastName is minlength is 5 characters
+                  </div>
+                  <div *ngIf="lastName.errors['pattern']">
+                    lastName doesn't match the pattern
+                  </div>
+                </div>
+                
+                <label for="email">email</label>
+                <input 
+                  required 
+                  pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                  ngModel 
+                  name="email" 
+                  #email="ngModel"
+                  id="email" 
+                  type="text" 
+                  class="form-control">
+                <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                  <div *ngIf="email.errors['pattern']">
+                    Email doesn't match the pattern
+                  </div>
+                </div>
+               
+                <button type="submit" class="btn btn-primary" (click)="logFirstName()">Submit</button>
+              </div>
+            </form>

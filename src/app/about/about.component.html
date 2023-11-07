@@ -1,0 +1,14 @@
+<p>about works!</p>
+<!-- <ul *ngFor="let user of users">
+    <li>{{user.name}}</li>
+</ul> -->
+<table border="1">
+<tr>
+    <td>userId</td>
+    <td>title</td>
+</tr>
+<tr *ngFor="let user of users">
+    <td>{{user.userId}}</td>
+    <td>{{user.title}}</td>
+</tr>
+</table>

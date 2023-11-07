@@ -1,0 +1,15 @@
+<p>methods works!</p>
+ <div> {{from_index}}-{{to_index}} of {{total_records}}   </div> 
+
+   <div> <img (click)="previousPage()" class="cursor-pointer" src="/assets/backward-arrow.png" /> &nbsp;&nbsp;&nbsp;
+    <img (click)="nextPage()" class="cursor-pointer" src="/assets/next.png" /></div>
+<table>
+  <tr>  <td>userId</td>
+    <td>Email</td>
+</tr>
+<tr *ngFor="let user of img">
+    
+    <td>{{user.id}}</td>
+    <td>{{user.email}}</td>
+</tr>
+</table>
